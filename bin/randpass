@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/randpass'
+
+pass = if ARGV.empty?
+         Randpass[18]
+       else
+         Randpass.get ARGV[0].to_i
+       end
+
+# @todo Add clipboard gem
+# Clipboard.copy pass
+puts pass
+
