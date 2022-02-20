@@ -10,6 +10,6 @@ Create random password with ruby
 How to use:
 
 ```ruby
-Randpass[20]
+Randompass[20]
 => "0!ZNiAUZCbjo!#hHeX+XX$eAC=!p"
 ```

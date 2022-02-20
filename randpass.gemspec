@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'lib/randpass/version'
+require_relative './lib/randpass/version'
 
 Gem::Specification.new do |s|
   s.name        = 'randpass'
@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
   s.metadata['rubygems_mfa_required'] = 'true'
 
   s.files = %w[ lib/randpass.rb
+                lib/randpass/version.rb
                 lib/randpass/random.rb
                 LICENSE
                 README.md
