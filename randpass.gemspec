@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.executables = 'randpass'
 
   s.metadata['homepage_uri'] = 'https://github.com/alx3dev/randpass'
-  s.metadata['source_code_uri'] = s.homepage
+  s.metadata['source_code_uri'] = 'https://github.com/alx3dev/randpass'
   s.metadata['bug_tracker_uri'] = "#{s.homepage}/issues"
   s.metadata['changelog_uri'] = "#{s.homepage}/changelog.md"
   s.metadata['documentation_uri'] = "https://rubydoc.info/gems/#{s.name}/#{s.version}"
@@ -33,8 +33,7 @@ Gem::Specification.new do |s|
                 README.md
                 randpass.gemspec]
 
-
-  s.required_ruby_version = '> 2.7', '< 3.2'
+  s.required_ruby_version = '>= 2.7', '< 3.2'
 
   s.add_development_dependency 'bundler', '~> 2.3'
   s.add_development_dependency 'rake', '~> 13.0'
