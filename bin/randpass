@@ -4,7 +4,7 @@
 require_relative '../lib/randpass'
 
 pass = if ARGV.empty?
-         Randpass[18]
+         Randpass[22]
        else
          Randpass.randpass ARGV[0].to_i
        end

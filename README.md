@@ -22,14 +22,14 @@ git clone https://www.github.com/alx3dev/randpass \
 cd randpass && bundle install
 ```
 
-To build your own gem, run `rake bundle`, and install it locally with `gem install pkg/randpass-0.1.1.gem`
+To build your own gem, run `rake bundle`, and install it locally with `gem install pkg/randpass-0.1.3.gem`
 
 ## How to use:
 
  - use from terminal
 
 ```
-# default 18 characters
+# default 22 characters
 randpass
  => 3!J_GApnCy4Mor1hMPbI?LhT
 

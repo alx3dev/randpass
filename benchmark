@@ -1,0 +1,13 @@
+----------------
+
+                         user     system      total        real                                           
+randpass with case  18.888952   9.115423  28.004375 ( 28.120620)
+
+
+----------------
+
+                                 user     system      total        real
+randpass with array.freeze  15.530568   1.095894  16.626462 ( 16.628366)
+
+
+----------------
