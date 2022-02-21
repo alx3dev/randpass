@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
                 README.md
                 randpass.gemspec]
 
-  s.required_ruby_version = '>= 2.7', '< 3.2'
+  s.required_ruby_version = '>= 2.6', '< 3.2'
 
   s.add_development_dependency 'bundler', '~> 2.3'
   s.add_development_dependency 'rake', '~> 13.0'
