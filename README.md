@@ -63,3 +63,9 @@ class MyClass
   end
 end
 ```
+
+Tested on:
+ - ruby `2.7.5`
+ - ruby `3.0.3`
+ - ruby `3.1.0-preview1`
+ - jruby `9.3.2.0`
