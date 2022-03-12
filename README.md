@@ -31,11 +31,11 @@ To build your own gem, run `rake bundle`, and install it locally with `gem insta
 ```
 # default 22 characters
 randpass
- => 3!J_GApnCy4Mor1hMPbI?LhT
+ => W4fkGVdXx6pzk$O?VP11!wWs
 
 # or add number of characters as argument
-randpass 30
- => zBv2BXVB/X2WJMqzSE%VRe#Sg!/0_wYpvJC1gyHU
+randpass 33
+ => etkK$YW1R_PXK8FsjnGHr+%w2cTBbMTOTej3s8je?2ya
  
  # install from rubygems, or build your own version, otherwise you need to run:
  bin/randpass
@@ -48,7 +48,7 @@ require 'randpass'
 Randpass[20]
 # or
 Randpass.randpass 20
- => "0!ZNiAUZCbjo!#hHeX+XX$eAC=!p"
+ => "1L3Jk$S850Np=ikQ7zeqb44qaBC9"
 ```
 
 Randpass is a module with both class and instance methods `#randpass`, so you can include/extend it in your class.
