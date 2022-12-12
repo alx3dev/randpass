@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+function install_clipboard_dependency() {
+
+  if !(command -v xsel) >/dev/null 2>&1; then
+
+    echo "xsel was not found on the system, looking for xclip..."
+
+    if !(command -v xclip) >/dev/null 2>&1; then
+
+      echo "xclip also not found, installing xsell..."
+      sudo apt install xsel -y
+
+    else
+      echo "but xclip was"
+    fi
+    
+  else
+    echo "xsel found on the system"
+  fi
+}
+
+echo -e -n "Type 'w' if you are on Windows system, otherwise press enter: "
+read linux_key
+
+if [ "$linux_key" == "w" ] || [ "$linux_key" == "W" ]; then
+  bundle install
+else
+  install_clipboard_dependency
+  bundle install
+fi

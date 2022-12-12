@@ -2,5 +2,6 @@
 
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in randpass.gemspec
 gemspec
+
+gem "ffi", :platforms => [:mswin, :mingw] # Required by Clipboard on Windows

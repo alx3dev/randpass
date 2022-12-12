@@ -35,6 +35,8 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 2.6', '< 3.2'
 
+  s.add_runtime_dependency 'clipboard', '~> 1.3'
+
   s.add_development_dependency 'bundler', '~> 2.3'
   s.add_development_dependency 'rake', '~> 13.0'
 end

@@ -14,7 +14,7 @@ module Randpass
   # Transform to array, shuffle, and join back to string.
   #
   # Provide number of characters for password as argument,
-  # default value is **22**.
+  # default value is **25**.
   #
   # @param [Integer] number_of_chars Optional. Number of password characters.
   # @return [String]
@@ -25,9 +25,10 @@ module Randpass
 
   class << self
     # @return [String]
-    def randpass(number_of_chars = 20)
+    def randpass(chars_no = nil)
+      chars_no = 25 if (chars_no.nil? || chars_no == 0)
       # slice string made with base64, to number of characters we want
-      param = SecureRandom.base64(number_of_chars)[0...number_of_chars]
+      param = SecureRandom.base64(chars_no)[0...chars_no]
 
       rand(param.size / 2).times do
         param = add_special_characters(param)

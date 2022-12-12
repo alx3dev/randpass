@@ -3,12 +3,14 @@
 
 require_relative '../lib/randpass'
 
-pass = if ARGV.empty?
-         Randpass[22]
-       else
-         Randpass.randpass ARGV[0].to_i
-       end
+clip_clear_coms = %w[-c c -q q clear]
 
-# @todo Add clipboard gem
-# Clipboard.copy pass
-puts pass
+if clip_clear_coms.include? ARGV[0]
+  Clipboard.clear
+  exit(1)
+end
+ 
+arno = ARGV.empty? ? nil : ARGV[0].to_i
+pass = Randpass[arno]
+puts(pass) unless Randpass.noprint?
+Clipboard.copy(pass) unless Randpass.nocopy?

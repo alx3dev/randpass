@@ -2,6 +2,8 @@
 
 Create random password with ruby. Use `SecureRandom#base64` + few random special characters.
 
+V-0.2.0 - copy password with clipboard gem
+
 ## How to install
 
  - install from rubygems
@@ -13,13 +15,13 @@ gem install randpass
 
 ```
 git clone git@github.com:alx3dev/randpass \
-cd randpass && bundle install
+cd randpass && bin/setup
 ```
  - download from github with https
 
 ```
 git clone https://www.github.com/alx3dev/randpass \
-cd randpass && bundle install
+cd randpass && bin/setup
 ```
 
 To build your own gem, run `rake bundle`, and install it locally with `gem install pkg/randpass-0.1.3.gem`
