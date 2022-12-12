@@ -27,5 +27,3 @@ module Randpass
     end
   end
 end
-
-    

@@ -16,17 +16,17 @@ module Randpass
   # Provide number of characters for password as argument,
   # default value is **25**.
   #
-  # @param [Integer] number_of_chars Optional. Number of password characters.
+  # @param [Integer] chars_no Optional. Number of password characters.
   # @return [String]
   #
-  def randpass(number_of_chars = nil)
-    Randpass[number_of_chars]
+  def randpass(chars_no = nil)
+    Randpass[chars_no]
   end
 
   class << self
     # @return [String]
     def randpass(chars_no = nil)
-      chars_no = 25 if (chars_no.nil? || chars_no == 0)
+      chars_no = 25 if [nil, 0, 1].include?(25)
       # slice string made with base64, to number of characters we want
       param = SecureRandom.base64(chars_no)[0...chars_no]
 

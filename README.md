@@ -31,7 +31,7 @@ To build your own gem, run `rake bundle`, and install it locally with `gem insta
  - use from terminal
 
 ```
-# default 22 characters
+# default 25 characters - print and copy to clipboard
 randpass
  => W4fkGVdXx6pzk$O?VP11!wWs
 

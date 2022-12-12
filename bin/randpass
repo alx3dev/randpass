@@ -1,8 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require_relative '../lib/randpass'
-
 clip_clear_coms = %w[-c c -C C -q q -Q Q]
 dependency_coms = %w[-d d -D D -s s -S S]
 
@@ -10,7 +8,10 @@ if dependency_coms.include? ARGV[0]
   dir = File.expand_path(__FILE__).gsub('/bin/randpass', '')
   Dir.chdir dir
   system 'bin/setup'
+  exit(1)
 end
+
+require_relative '../lib/randpass'
 
 if clip_clear_coms.include? ARGV[0]
   Clipboard.clear
@@ -19,5 +20,6 @@ end
  
 arno = ARGV.empty? ? nil : ARGV[0].to_i
 pass = Randpass[arno]
+
 puts(pass) unless Randpass.noprint?
 Clipboard.copy(pass) unless Randpass.nocopy?
