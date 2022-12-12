@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
 
   s.bindir = 'bin'
   s.require_paths = 'lib'
-  s.executables = 'randpass'
+  s.executables = 'randpass', 'setup'
 
   s.metadata['homepage_uri'] = 'https://github.com/alx3dev/randpass'
   s.metadata['source_code_uri'] = 'https://github.com/alx3dev/randpass'

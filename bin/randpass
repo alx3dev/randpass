@@ -10,9 +10,6 @@ if dependency_coms.include? ARGV[0]
   dir = File.expand_path(__FILE__).gsub('/bin/randpass', '')
   Dir.chdir dir
   system 'bin/setup'
-else
-  require 'irb'
-  IRB.start(__FILE__)
 end
 
 if clip_clear_coms.include? ARGV[0]
