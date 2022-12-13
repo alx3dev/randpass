@@ -1,8 +1,13 @@
 # Randpass
 
-Create random password with ruby. Use `SecureRandom#base64` + few random special characters.
+**Under Development**
 
-V-0.2.0 - copy password with clipboard gem
+V-0.2.0:
+  - copy password with clipboard gem
+  - add storage module
+
+
+Create random password with ruby. Use `SecureRandom#base64` + few random special characters.
 
 ## How to install
 
