@@ -17,7 +17,7 @@ if clip_clear_coms.include? ARGV[0]
   Clipboard.clear
   exit(1)
 end
- 
+
 arno = ARGV.empty? ? nil : ARGV[0].to_i
 pass = Randpass[arno]
 

@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Randpass::VERSION
   s.summary     = 'Ruby random password generator'
   s.description = <<~DESCRIPTION
-    Generate random password with SecureRandom#base64. Add random number
+    Ruby random password generator. Generate random password with SecureRandom#base64. Add random number
     of random special characters, and shuffle it.
   DESCRIPTION
 
@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
   s.files = %w[ lib/randpass.rb
                 lib/randpass/version.rb
                 lib/randpass/random.rb
+                lib/randpass/storage.rb
                 LICENSE
                 README.md
                 randpass.gemspec]

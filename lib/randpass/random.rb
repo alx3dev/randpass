@@ -7,6 +7,7 @@ require 'securerandom'
 # class and instance method, so you can call it or include it.
 #
 module Randpass
+
   # Allowed specials. xxx is just a flag for #add_special_chars
   ARRAY = %w[! # * $ % _ @ xxx].freeze
 
@@ -23,11 +24,14 @@ module Randpass
     Randpass[chars_no]
   end
 
+
   class << self
+
     # @return [String]
     def randpass(chars_no = nil)
-      chars_no = 25 if [nil, 0, 1].include?(25)
-      # slice string made with base64, to number of characters we want
+
+      chars_no = 25 if [nil, 0, 1].include?(chars_no)
+
       param = SecureRandom.base64(chars_no)[0...chars_no]
 
       rand(param.size / 2).times do
@@ -38,6 +42,7 @@ module Randpass
     end
 
     alias [] randpass
+
 
     private
 
