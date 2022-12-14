@@ -23,14 +23,13 @@ Setup script will check and install `xsel` if nothing is found.
  Use from terminal:  
 
   - generate password with 25 characters  
-
-`randpass`  
+  `randpass`  
 
   - generate password with 30 characters  
-`randpass 30`  
+  `randpass 30`  
 
   - clear clipboard  
-`randpass -c`  
+  `randpass -c`  
 
 
 ## How to install

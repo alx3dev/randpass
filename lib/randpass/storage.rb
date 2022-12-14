@@ -14,24 +14,6 @@ module Randpass
 
     def initialized?; @initialized == true end
 
-
-    def generate_list(chars_no = nil, opts = {comments: [], list: 10})
-
-      storage_init unless initialized?
-
-      if opts[:comments].empty?
-        opts[:list].times do
-          add Randpass[chars_no]
-        end
-      else
-        opts[:comments].select do |com|
-          add Randpass[chars_no], com
-        end
-      end
-
-      Randpass.finalize
-    end
-
     
     def storage_init(path = nil)
 
@@ -40,11 +22,10 @@ module Randpass
       else
         @path = path
       end
-    
-      @temp = Tempfile.new ["randpass", '.storage']
 
       Dir.chdir @path
-      FileUtils.mkdir_p('main_storage')
+
+      @temp = Tempfile.new ["randpass", '.storage']
 
       @initialized = true
     end
@@ -64,6 +45,24 @@ module Randpass
       File.rename @temp, "#{@path}/main_storage/randpass_#{Time.now.to_i}.txt"
       @temp.unlink
       @initialized = false
+    end
+
+
+    def generate_list(chars_no = nil, opts = {comments: [], list: 10})
+
+      storage_init unless initialized?
+
+      if opts[:comments].empty?
+        opts[:list].times do
+          add Randpass[chars_no]
+        end
+      else
+        opts[:comments].select do |com|
+          add Randpass[chars_no], com
+        end
+      end
+
+      Randpass.finalize
     end
   end
 end

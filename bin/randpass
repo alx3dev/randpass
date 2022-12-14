@@ -1,25 +1,60 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-clip_clear_coms = %w[-c c -C C -q q -Q Q]
-dependency_coms = %w[-d d -D D -s s -S S]
+require_relative './options'
 
-if dependency_coms.include? ARGV[0]
+opts = Optimist.options do
+
+  banner BANNER
+
+  opt :setup,   SETUP_DESCRIPTION,      short: 's', long: 'gem-setup'
+  opt :list,    LIST_DESCRIPTION,       short: 'l', long: 'list'
+  opt :num,     NUMBER_DESCRIPTION,     short: 'n', long: 'no',       type: Integer
+  opt :random,  RANDOM_DESCRIPTION,     short: 'r', long: 'random',   type: Integer
+  opt :clear,   CLIPBOARD_DESCRIPTION,  short: 'c', long: 'clear',    default: false
+  opt :nocopy,  NO_COPY_DESCRIPTION,    short: 'd', long: 'no-copy',  default: false
+  opt :noprint, NO_PRINT_DESCRIPTION,   short: 'o', long: 'no-print', default: false
+
+  version "Randpass #{Randpass::VERSION}"
+end
+
+if opts[:setup]
+
   dir = File.expand_path(__FILE__).gsub('/bin/randpass', '')
   Dir.chdir dir
   system 'bin/setup'
   exit(1)
+
+else
+  require_relative '../lib/randpass'
+
+  Randpass.nocopy! if opts[:nocopy]
+  Randpass.noprint! if opts[:noprint]
+
+  if opts[:num] && opts[:random] > 0
+    Randpass.generate_list opts[:num], list: opts[:random]
+    exit(1)
+  end
+
+  if opts[:list] && opts[:num]
+    Randpass.generate_list opts[:num], comments: opts[:list]
+    exit(1)
+  elsif opts[:list]
+    Randpass.generate_list nil, comments: opts[:list]
+    exit(1)
+  end
+
+  case
+  when opts[:clear]
+    Clipboard.clear
+    exit(1)
+
+  when ARGV.empty?
+    Output[20]
+    exit(1)
+
+  when ARGV.size == 1
+    Output[ARGV[0].to_i]
+    exit(1)
+  end
 end
-
-require_relative '../lib/randpass'
-
-if clip_clear_coms.include? ARGV[0]
-  Clipboard.clear
-  exit(1)
-end
-
-arno = ARGV.empty? ? nil : ARGV[0].to_i
-pass = Randpass[arno]
-
-puts(pass) unless Randpass.noprint?
-Clipboard.copy(pass) unless Randpass.nocopy?
