@@ -33,10 +33,10 @@ Setup script will check and install `xsel` if nothing is found.
  - clear clipboard  
    `randpass -c`  
 
- - generate password list from comments (20 characters long password)
+ - generate password list from comments (20 characters long password)  
     `randpass -n 20 -l password1 password2 password3`  
 
- - generate password list with 10 passwords - without comments
+ - generate password list with 10 passwords - without comments  
     `randpass -r 10`  
     `randpass -n 20 -r 10`
 
