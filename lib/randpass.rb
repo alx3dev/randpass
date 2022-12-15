@@ -4,8 +4,6 @@ require_relative 'randpass/version'
 require_relative 'randpass/random'
 require_relative 'randpass/storage'
 
-require 'clipboard'
-
 module Randpass
 
   class << self

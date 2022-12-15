@@ -8,12 +8,12 @@ opts = Optimist.options do
   banner BANNER
 
   opt :setup,   SETUP_DESCRIPTION,      short: 's', long: 'gem-setup'
-  opt :list,    LIST_DESCRIPTION,       short: 'l', long: 'list'
-  opt :num,     NUMBER_DESCRIPTION,     short: 'n', long: 'no',       type: Integer
-  opt :random,  RANDOM_DESCRIPTION,     short: 'r', long: 'random',   type: Integer
+  opt :num,     NUMBER_DESCRIPTION,     short: 'n', long: 'no',       type: :integer
+  opt :list,    LIST_DESCRIPTION,       short: 'l', long: 'list',     type: :strings
+  opt :random,  RANDOM_DESCRIPTION,     short: 'r', long: 'random',   type: :integer
   opt :clear,   CLIPBOARD_DESCRIPTION,  short: 'c', long: 'clear',    default: false
-  opt :nocopy,  NO_COPY_DESCRIPTION,    short: 'd', long: 'no-copy',  default: false
-  opt :noprint, NO_PRINT_DESCRIPTION,   short: 'o', long: 'no-print', default: false
+  opt :nocopy,  NO_COPY_DESCRIPTION,    short: 'd', long: 'noc',      default: false
+  opt :noprint, NO_PRINT_DESCRIPTION,   short: 'o', long: 'nop',      default: false
 
   version "Randpass #{Randpass::VERSION}"
 end
@@ -27,34 +27,41 @@ if opts[:setup]
 
 else
   require_relative '../lib/randpass'
+  require 'clipboard'
+
+
+  (Clipboard.clear && exit(1)) if opts[:clear]
 
   Randpass.nocopy! if opts[:nocopy]
   Randpass.noprint! if opts[:noprint]
 
-  if opts[:num] && opts[:random] > 0
-    Randpass.generate_list opts[:num], list: opts[:random]
-    exit(1)
-  end
-
-  if opts[:list] && opts[:num]
-    Randpass.generate_list opts[:num], comments: opts[:list]
-    exit(1)
-  elsif opts[:list]
-    Randpass.generate_list nil, comments: opts[:list]
-    exit(1)
-  end
-
   case
-  when opts[:clear]
-    Clipboard.clear
+  when opts[:num] && opts[:random]
+    Randpass.generate_list opts[:num], list: opts[:random]
+    Output[Randpass.storage]
+    exit(1)
+
+  when opts[:random]
+    Randpass.generate_list nil, list: opts[:random]
+    Output[Randpass.storage]
+    exit(1)
+
+  when opts[:list] && opts[:num]
+    Randpass.generate_list opts[:num].to_i, comments: opts[:list]
+    Output[Randpass.storage]
+    exit(1)
+
+  when opts[:list]
+    Randpass.generate_list nil, comments: opts[:list]
+    Output[Randpass.storage]
     exit(1)
 
   when ARGV.empty?
-    Output[20]
+    Output[Randpass[20]] && exit(1)
     exit(1)
 
   when ARGV.size == 1
-    Output[ARGV[0].to_i]
+    Output[Randpass[ARGV[0].to_i]]
     exit(1)
   end
 end

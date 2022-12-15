@@ -1,15 +1,17 @@
+### UNDER DEVELOPMENT
+
 # Randpass
 
-**Under Development**
-
 V-0.2.0:
-  - copy password with clipboard gem
+  - copy password in clipboard
   - add storage module
 
 
 Ruby random password generator.  
-Generate password and copy into clipboard, or generate list and save as `.txt` file.  
-File is saved as plain text, it up to end-user to decide how to keep it safe.  
+Generate password and copy in clipboard, or generate list and save as `.txt` file.  
+File is saved as plain text, it is up to end-user to decide how to secure it.  
+
+Password is generated with `SecureRandom#base64` and a few special characters `! # * $ % _ @`  
 
 
 ## Dependencies
@@ -22,14 +24,25 @@ Setup script will check and install `xsel` if nothing is found.
 
  Use from terminal:  
 
-  - generate password with 25 characters  
-  `randpass`  
+ - generate password with 25 characters  
+   `randpass`  
 
-  - generate password with 30 characters  
-  `randpass 30`  
+ - generate password with 30 characters  
+   `randpass 30`  
 
-  - clear clipboard  
-  `randpass -c`  
+ - clear clipboard  
+   `randpass -c`  
+
+ - generate password list from comments (20 characters long password)
+    `randpass -n 20 -l password1 password2 password3`  
+
+ - generate password list with 10 passwords - without comments
+    `randpass -r 10`  
+    `randpass -n 20 -r 10`
+
+ - add `--noc` and/or `--nop` to diasable copy and stdout, respectively  
+    `randpass 35 --noc`  
+    `randpass -r 10 --noc --nop`  
 
 
 ## How to install

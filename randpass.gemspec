@@ -7,8 +7,9 @@ Gem::Specification.new do |s|
   s.version     = Randpass::VERSION
   s.summary     = 'Ruby random password generator'
   s.description = <<~DESCRIPTION
-    Ruby random password generator. Generate random password with SecureRandom#base64. Add random number
-    of random special characters, and shuffle it.
+    Generate single password or list, with or without comments,
+    and copy password in clipboard (or not). Password is generated with
+    SecureRandom#base64 + random special characters.
   DESCRIPTION
 
   s.license = 'MIT'
@@ -17,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.bindir = 'bin'
   s.require_paths = 'lib'
-  s.executables = 'randpass', 'setup'
+  s.executables = 'randpass'
 
   s.metadata['homepage_uri'] = 'https://github.com/alx3dev/randpass'
   s.metadata['source_code_uri'] = 'https://github.com/alx3dev/randpass'
@@ -30,6 +31,8 @@ Gem::Specification.new do |s|
                 lib/randpass/version.rb
                 lib/randpass/random.rb
                 lib/randpass/storage.rb
+                bin/options.rb
+                bin/setup
                 LICENSE
                 README.md
                 randpass.gemspec]

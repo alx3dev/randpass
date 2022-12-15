@@ -64,9 +64,8 @@ NO_PRINT_DESCRIPTION =
   
 module Output
 
-  def self.[](password)
-    pass = Randpass[password]
-    STDOUT.puts(pass) unless Randpass.noprint?
-    Clipboard.copy(pass) unless Randpass.nocopy?
+  def self.[](txt)
+    STDOUT.puts(txt) unless Randpass.noprint?
+    Clipboard.copy(txt) unless Randpass.nocopy?
   end
 end
