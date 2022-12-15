@@ -7,6 +7,8 @@
 - Add option to disable clipboard copy
 - Add option do disable stdout
 - Add setup file, and allow call from randpass executable
+- Add storage module
+- Add option to generate list (named or not)
 
 **[ERROR]:**
 - (fixed) Error when using 1 or 2 characters (now return default - 25)
