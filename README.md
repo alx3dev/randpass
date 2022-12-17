@@ -1,4 +1,4 @@
-# Randpass v0.2.1
+# Randpass v0.3.0
 
 Ruby random password generator.  
 Generate password and copy in clipboard, or generate list and/or save as `.txt` file.  
@@ -70,7 +70,7 @@ cd randpass && bundle install
 ```  
 Linux users should run: `bin/setup`  
 
-To build your own gem, run `rake build`, and install it locally with `gem install pkg/randpass-0.2.1.gem`
+To build your own gem, run `rake build`, and install it locally with `gem install pkg/randpass-0.3.0.gem`
 
 
 Tested on:
