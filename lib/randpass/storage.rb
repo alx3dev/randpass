@@ -10,7 +10,7 @@ module Randpass
 
     FILE_PATH = File.expand_path(__FILE__).gsub('/lib/randpass/storage.rb', '')
 
-    # Add password to list
+    # Add password to array
     # @param [String] pass **Required**. Add password to list
     # @param [String] comm Optional. Comment to write with password
     #
@@ -20,10 +20,12 @@ module Randpass
       @temp << line
     end
     
-    # Write list as .txt file
+    # Save list of passwords in txt file
     def finalize
       unless Randpass.nosave?
-        File.write "#{@path}/randpass_#{Time.now.to_i}.txt", @temp.join("\n")
+        temp = @temp.join "\n"
+        @path += '/' unless @path.end_with?('/')
+        File.write "#{@path}randpass_#{Time.now.to_i}.txt", temp
       end
       @initialized = false
     end
@@ -57,7 +59,6 @@ module Randpass
 
     def reload
       @path ||= FILE_PATH
-      Dir.chdir(@path)
       @temp = Array.new
       @initialized = true
     end

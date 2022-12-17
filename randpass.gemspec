@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
                 lib/randpass/version.rb
                 lib/randpass/random.rb
                 lib/randpass/storage.rb
-                bin/options.rb
+                bin/output.rb
                 bin/setup
                 LICENSE
                 README.md

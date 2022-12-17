@@ -23,25 +23,30 @@ Setup script will check and install `xsel` if nothing is found.
  - generate password with 30 characters  
    `randpass 30`  
 
+ - clear clipboard  
+   `randpass -c`  
+
  - add `-k` or `--noc` to disable clipboard copy  
     `randpass 35 --noc`  
 
  - add `-p` or `--nop` to disable STDOUT  
     `randpass 20 -p`  
-
- - clear clipboard  
-   `randpass -c`  
-
+    
  - generate password list from comments (20 characters long password)  
     `randpass -n 20 -l GitHub RubyGems AnotherWebSite`  
 
  - generate password list with 10 passwords - without comments  
     `randpass -r 10`  
-    `randpass -n 20 -r 10`
+    `randpass -n 20 -r 10`  
 
- - add `-o` or `--nos` to not save list as a file  
+ - add `-s` or `--nos` to disable saving list as a file  
     - `randpass -n 20 -r 5 --nos` 
     - `randpass -r 10 --nos --noc`  
+
+ - add custom path where to store password list  
+    `randpass -r 10 --path 'my_path/directory'`  
+
+
 
 
 ## How to install
@@ -49,20 +54,21 @@ Setup script will check and install `xsel` if nothing is found.
  - install from rubygems
 
 ```
-gem install randpass && randpass -s
+gem install randpass && randpass -i
 ```
  - download from github with ssh
 
 ```
 git clone git@github.com:alx3dev/randpass \
-cd randpass && bin/setup
+cd randpass && bundle install
 ```
  - download from github with https
 
 ```
 git clone https://www.github.com/alx3dev/randpass \
-cd randpass && bin/setup
-```
+cd randpass && bundle install
+```  
+Linux users should run: `bin/setup`  
 
 To build your own gem, run `rake build`, and install it locally with `gem install pkg/randpass-0.2.1.gem`
 
