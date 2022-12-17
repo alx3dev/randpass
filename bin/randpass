@@ -7,13 +7,14 @@ opts = Optimist.options do
 
   banner BANNER
 
-  opt :setup,   SETUP_DESCRIPTION,      short: 's', long: 'gem-setup'
-  opt :num,     NUMBER_DESCRIPTION,     short: 'n', long: 'no',       type: :integer
+  opt :setup,   SETUP_DESCRIPTION,      short: 'i', long: 'gem-install'
+  opt :num,     NUMBER_DESCRIPTION,     short: 'n', long: 'char',     type: :integer
   opt :list,    LIST_DESCRIPTION,       short: 'l', long: 'list',     type: :strings
   opt :random,  RANDOM_DESCRIPTION,     short: 'r', long: 'random',   type: :integer
   opt :clear,   CLIPBOARD_DESCRIPTION,  short: 'c', long: 'clear',    default: false
-  opt :nocopy,  NO_COPY_DESCRIPTION,    short: 'd', long: 'noc',      default: false
-  opt :noprint, NO_PRINT_DESCRIPTION,   short: 'o', long: 'nop',      default: false
+  opt :nocopy,  NO_COPY_DESCRIPTION,    short: 'k', long: 'noc',      default: false
+  opt :noprint, NO_PRINT_DESCRIPTION,   short: 'p', long: 'nop',      default: false
+  opt :nosave,  NO_SAVE_DESCRIPTION,    short: 's', long: 'nos',      default: false
 
   version "Randpass #{Randpass::VERSION}"
 end
@@ -32,7 +33,8 @@ else
 
   (Clipboard.clear && exit(1)) if opts[:clear]
 
-  Randpass.nocopy! if opts[:nocopy]
+  Randpass.nocopy!  if opts[:nocopy]
+  Randpass.nosave!  if opts[:nosave]
   Randpass.noprint! if opts[:noprint]
 
   case
@@ -44,6 +46,7 @@ else
   when opts[:random]
     Randpass.generate_list nil, list: opts[:random]
     Output[Randpass.storage]
+    puts('it is array') if Randpass.storage.is_a?(Array)
     exit(1)
 
   when opts[:list] && opts[:num]
@@ -58,7 +61,6 @@ else
 
   when ARGV.empty?
     Output[Randpass[20]] && exit(1)
-    exit(1)
 
   when ARGV.size == 1
     Output[Randpass[ARGV[0].to_i]]

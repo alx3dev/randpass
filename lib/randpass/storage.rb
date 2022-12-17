@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'tempfile'
 require 'fileutils'
 
 module Randpass
@@ -11,20 +10,21 @@ module Randpass
 
     FILE_PATH = File.expand_path(__FILE__).gsub('/lib/randpass/storage.rb', '')
 
-    # Add password to file
+    # Add password to list
     # @param [String] pass **Required**. Add password to list
     # @param [String] comm Optional. Comment to write with password
     #
     def add(pass, comm = nil)
-      storage_init unless @initialized
-      @temp << "#{comm}: " unless comm.nil?
-      @temp << pass
-      @temp << "\n"
+      reload unless @initialized
+      line = comm.nil? ? pass : "#{comm}: #{pass}"
+      @temp << line
     end
     
     # Write list as .txt file
     def finalize
-      File.write "#{@path}/randpass_#{Time.now.to_i}.txt", @temp
+      unless Randpass.nosave?
+        File.write "#{@path}/randpass_#{Time.now.to_i}.txt", @temp.join("\n")
+      end
       @initialized = false
     end
 
@@ -37,8 +37,6 @@ module Randpass
     # @option opts [Integer] list Number of passwords to generate (if no comments)
     #
     def generate_list(chars_no, opts = {list: 10})
-      storage_init unless initialized?
-
       if opts[:comments].nil?
         opts[:list].times do
           add Randpass[chars_no]
@@ -57,18 +55,17 @@ module Randpass
       @temp
     end
 
+    def reload
+      @path ||= FILE_PATH
+      Dir.chdir(@path)
+      @temp = Array.new
+      @initialized = true
+    end
+
 
     private
 
     def initialized?; @initialized == true end
 
-    def storage_init
-      @path ||= FILE_PATH
-      Dir.chdir @path
-      @temp = String.new
-      @initialized = true
-    end
-
-    alias :init_storage :storage_init
   end
 end

@@ -10,6 +10,7 @@ module Randpass
 
     @output = true
     @copy = true
+    @save = true
 
 
     def nocopy?
@@ -29,6 +30,16 @@ module Randpass
 
     def noprint!
       @output = false
+    end
+
+
+    def nosave?
+      @save == false
+    end
+
+
+    def nosave!
+      @save = false
     end
   end
 end

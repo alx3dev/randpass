@@ -3,27 +3,12 @@
 require 'securerandom'
 
 # Generate random password with SecureRandom#base64 and a few
-# random special characters. Method #randpass is defined as
-# class and instance method, so you can call it or include it.
+# special characters.
 #
 module Randpass
 
-  # Allowed specials. xxx is just a flag for #add_special_chars
+  # Allowed specials. xxx is just a skip-flag for #add_special_chars
   ARRAY = %w[! # * $ % _ @ xxx].freeze
-
-  # Random number of times try to add random special character.
-  # Transform to array, shuffle, and join back to string.
-  #
-  # Provide number of characters for password as argument,
-  # default value is **25**.
-  #
-  # @param [Integer] chars_no Optional. Number of password characters.
-  # @return [String]
-  #
-  def randpass(chars_no = nil)
-    Randpass[chars_no]
-  end
-
 
   class << self
 

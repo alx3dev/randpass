@@ -1,14 +1,7 @@
-### UNDER DEVELOPMENT
-
-# Randpass
-
-V-0.2.0:
-  - copy password in clipboard
-  - add storage module
-
+# Randpass v0.2.1
 
 Ruby random password generator.  
-Generate password and copy in clipboard, or generate list and save as `.txt` file.  
+Generate password and copy in clipboard, or generate list and/or save as `.txt` file.  
 File is saved as plain text, it is up to end-user to decide how to secure it.  
 
 Password is generated with `SecureRandom#base64` and a few special characters `! # * $ % _ @`  
@@ -30,19 +23,25 @@ Setup script will check and install `xsel` if nothing is found.
  - generate password with 30 characters  
    `randpass 30`  
 
+ - add `-k` or `--noc` to disable clipboard copy  
+    `randpass 35 --noc`  
+
+ - add `-p` or `--nop` to disable STDOUT  
+    `randpass 20 -p`  
+
  - clear clipboard  
    `randpass -c`  
 
  - generate password list from comments (20 characters long password)  
-    `randpass -n 20 -l password1 password2 password3`  
+    `randpass -n 20 -l GitHub RubyGems AnotherWebSite`  
 
  - generate password list with 10 passwords - without comments  
     `randpass -r 10`  
     `randpass -n 20 -r 10`
 
- - add `--noc` and/or `--nop` to diasable copy and stdout, respectively  
-    `randpass 35 --noc`  
-    `randpass -r 10 --noc --nop`  
+ - add `-o` or `--nos` to not save list as a file  
+    - `randpass -n 20 -r 5 --nos` 
+    - `randpass -r 10 --nos --noc`  
 
 
 ## How to install
@@ -65,7 +64,7 @@ git clone https://www.github.com/alx3dev/randpass \
 cd randpass && bin/setup
 ```
 
-To build your own gem, run `rake bundle`, and install it locally with `gem install pkg/randpass-0.2.0.gem`
+To build your own gem, run `rake build`, and install it locally with `gem install pkg/randpass-0.2.1.gem`
 
 
 Tested on:

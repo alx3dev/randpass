@@ -61,6 +61,11 @@ NO_PRINT_DESCRIPTION =
     Do not print output in stdout
   DESC
 
+NO_SAVE_DESCRIPTION =
+  <<~DESC
+    Do not save list output as txt file
+  DESC
+
   
 module Output
 
