@@ -24,9 +24,10 @@ Setup script will check and install `xsel` if nothing is found.
    `randpass 30`  
 
  - clear clipboard  
-   `randpass -c`  
+   `randpass -k`  
+   `randpass --clear`  
 
- - add `-k` or `--noc` to disable clipboard copy  
+ - add `-c` or `--noc` to disable clipboard copy  
     `randpass 35 --noc`  
 
  - add `-p` or `--nop` to disable STDOUT  
@@ -40,11 +41,11 @@ Setup script will check and install `xsel` if nothing is found.
     `randpass -n 20 -r 10`  
 
  - add `-s` or `--nos` to disable saving list as a file  
-    - `randpass -n 20 -r 5 --nos` 
-    - `randpass -r 10 --nos --noc`  
+    `randpass -n 20 -r 5 --nos` 
+    `randpass -r 10 --nos --noc`  
 
- - add custom path where to store password list  
-    `randpass -r 10 --path 'my_path/directory'`  
+ - add `-d` or `--dir` as location to store password list  
+    `randpass -r 10 -d 'my_path/directory'`  
 
 
 

@@ -10,9 +10,9 @@ opts = Optimist.options do
   opt :num,     NUMBER_DESCRIPTION,     short: 'n', long: 'char',     type: :integer
   opt :list,    LIST_DESCRIPTION,       short: 'l', long: 'list',     type: :strings
   opt :random,  RANDOM_DESCRIPTION,     short: 'r', long: 'random',   type: :integer
-  opt :path,    PATH_DESCRIPTION,       short: 'd', long: 'path',     type: :string
-  opt :clear,   CLIPBOARD_DESCRIPTION,  short: 'c', long: 'clear',    default: false
-  opt :nocopy,  NO_COPY_DESCRIPTION,    short: 'k', long: 'noc',      default: false
+  opt :path,    PATH_DESCRIPTION,       short: 'd', long: 'dir',      type: :string
+  opt :clear,   CLIPBOARD_DESCRIPTION,  short: 'k', long: 'clear',    default: false
+  opt :nocopy,  NO_COPY_DESCRIPTION,    short: 'c', long: 'noc',      default: false
   opt :noprint, NO_PRINT_DESCRIPTION,   short: 'p', long: 'nop',      default: false
   opt :nosave,  NO_SAVE_DESCRIPTION,    short: 's', long: 'nos',      default: false
 

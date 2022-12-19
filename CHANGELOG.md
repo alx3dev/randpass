@@ -3,8 +3,9 @@
 - Remove instance method `randpass`  
 - Store password list as array instead of string  
 - Add cli option to disable save of generated list as `.txt`  
+- If `--dir` is not defined, list is saved in working dir, instead of gem root  
 - Clipboard gem is used only in executable  
-- If path is not defined, list is saved in working dir, instead of gem root
+- Change some executable arguments (`-c`, `-k`)  
 
 
 ## [0.2.0] - 2022-12-12
