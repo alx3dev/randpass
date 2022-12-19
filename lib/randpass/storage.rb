@@ -8,8 +8,6 @@ module Randpass
 
     attr_accessor :path
 
-    FILE_PATH = File.expand_path(__FILE__).gsub('/lib/randpass/storage.rb', '')
-
     # Add password to array
     # @param [String] pass **Required**. Add password to list
     # @param [String] comm Optional. Comment to write with password
@@ -19,7 +17,13 @@ module Randpass
       line = comm.nil? ? pass : "#{comm}: #{pass}"
       @temp << line
     end
-    
+
+    def reload
+      @path ||= Dir.pwd
+      @temp = Array.new
+      @initialized = true
+    end
+
     # Save list of passwords in txt file
     def finalize
       unless Randpass.nosave?
@@ -55,12 +59,6 @@ module Randpass
     # Access password list
     def storage
       @temp
-    end
-
-    def reload
-      @path ||= FILE_PATH
-      @temp = Array.new
-      @initialized = true
     end
 
 
