@@ -54,7 +54,6 @@ Setup script will check and install `xsel` if nothing is found.
 
 
 
-
 ## How to install
 
  - install from rubygems
@@ -66,17 +65,14 @@ gem install randpass && randpass -i
 
 ```
 git clone git@github.com:alx3dev/randpass \
-cd randpass && bundle install
+cd randpass && randpass -i
 ```
  - download from github with https
 
 ```
 git clone https://www.github.com/alx3dev/randpass \
-cd randpass && bundle install
+cd randpass && randpass -i
 ```  
-Linux users should run: `bin/setup`  
-
-To build your own gem, run `rake build`, and install it locally with `gem install pkg/randpass-0.3.0.gem`
 
 
 Tested on:
