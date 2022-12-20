@@ -58,6 +58,9 @@ else
     Randpass.generate_list nil, list: opts[:random]
     Output[Randpass.storage]
 
+  when opts[:num]
+    Output[Randpass[opts[:num]]]
+
   when ARGV.empty?
     Output[Randpass[20]]
 
