@@ -1,14 +1,7 @@
-### UNDER DEVELOPMENT
-
-# Randpass
-
-V-0.2.0:
-  - copy password in clipboard
-  - add storage module
-
+# Randpass v0.3.0
 
 Ruby random password generator.  
-Generate password and copy in clipboard, or generate list and save as `.txt` file.  
+Generate password and copy in clipboard, or generate list and/or save as `.txt` file.  
 File is saved as plain text, it is up to end-user to decide how to secure it.  
 
 Password is generated with `SecureRandom#base64` and a few special characters `! # * $ % _ @`  
@@ -24,25 +17,41 @@ Setup script will check and install `xsel` if nothing is found.
 
  Use from terminal:  
 
+ When generating a single password, you don't need any argument, or you can add number of password characters (default is 25). By default, password is printed in STDOUT and copied to clipboard, but not saved as file.  
+
  - generate password with 25 characters  
    `randpass`  
 
  - generate password with 30 characters  
    `randpass 30`  
+   `randpass --char 30`
 
  - clear clipboard  
-   `randpass -c`  
+   `randpass -k`  
+   `randpass --clear`  
+
+ - add `-c` or `--noc` to disable clipboard copy  
+    `randpass 35 --noc`  
+
+ - add `-p` or `--nop` to disable STDOUT  
+    `randpass 20 -p`  
+
+ When generating a list of passwords, you need to supply `-n` or `--char` to set number of password characters (default is 25). Passwords will be saved in a current working directory (unless otherwise specified) in format `randpass_#{Time.now.to_i}.txt`. This way we avoid overwrite, and it's possible to get time of file generation with `Time.at TIME_INTEGER`  
 
  - generate password list from comments (20 characters long password)  
-    `randpass -n 20 -l password1 password2 password3`  
+    `randpass -n 20 -l GitHub RubyGems AnotherWebSite`  
 
  - generate password list with 10 passwords - without comments  
     `randpass -r 10`  
-    `randpass -n 20 -r 10`
+    `randpass -n 20 -r 10`  
 
- - add `--noc` and/or `--nop` to diasable copy and stdout, respectively  
-    `randpass 35 --noc`  
-    `randpass -r 10 --noc --nop`  
+ - add `-s` or `--nos` to disable saving list as a file  
+    `randpass -n 20 -r 5 --nos` 
+    `randpass -r 10 --nos --noc`  
+
+ - add `-d` or `--dir` as location to store password list  
+    `randpass -r 10 -d 'my_path/directory'`  
+
 
 
 ## How to install
@@ -50,26 +59,25 @@ Setup script will check and install `xsel` if nothing is found.
  - install from rubygems
 
 ```
-gem install randpass && randpass -s
+gem install randpass && randpass -i
 ```
  - download from github with ssh
 
 ```
 git clone git@github.com:alx3dev/randpass \
-cd randpass && bin/setup
+cd randpass && randpass -i
 ```
  - download from github with https
 
 ```
 git clone https://www.github.com/alx3dev/randpass \
-cd randpass && bin/setup
-```
-
-To build your own gem, run `rake bundle`, and install it locally with `gem install pkg/randpass-0.2.0.gem`
+cd randpass && randpass -i
+```  
 
 
 Tested on:
  - ruby `2.7.5`
  - ruby `3.0.3`
- - ruby `3.1.0-preview1`
+ - ruby `3.1.0`
+ - ruby `3.1.3`
  - jruby `9.3.2.0`

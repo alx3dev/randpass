@@ -2,23 +2,26 @@ require_relative '../lib/randpass/version' unless defined? Randpass::VERSION
 
 require 'optimist'
 
+module Output
+  def self.[](txt)
+    txt = txt.join("\n") if txt.is_a?(Array)
+    STDOUT.puts(txt) unless Randpass.noprint?
+    Clipboard.copy(txt) unless Randpass.nocopy?
+  end
+end
+
 BANNER =
   <<~DESC
     randpass
-      >> generate 25 chars long password
-
     randpass 33
-      >> generate 33 chars long password
-
-    ----------------------------------------
+    randpass -n 25 -r 5 --path '/path/for/output'
+    :
   DESC
 
 SETUP_DESCRIPTION =
   <<~DESC
     Install gem dependencies
       xsel or xclip on linux (for clipboard manipulation)
-
-    ----------------------------------------
   DESC
 
 NUMBER_DESCRIPTION =
@@ -26,7 +29,7 @@ NUMBER_DESCRIPTION =
     Number of password characters
       randpass -n 20 -l github rubygems
 
-    ----------------------------------------
+    -------------------------------------
   DESC
 
 LIST_DESCRIPTION =
@@ -34,7 +37,7 @@ LIST_DESCRIPTION =
     Save list of passwords for given comments
       randpass -l GitHub GitLab StackOverflow
 
-    ----------------------------------------
+    -------------------------------------
   DESC
 
 RANDOM_DESCRIPTION =
@@ -43,7 +46,13 @@ RANDOM_DESCRIPTION =
       randpass -r 5
       randpass -r 5 -n 25
 
-    ----------------------------------------
+    -------------------------------------
+  DESC
+
+PATH_DESCRIPTION =
+  <<~DESC
+    Path to directory where to save password list
+      default: gem directory
   DESC
 
 CLIPBOARD_DESCRIPTION =
@@ -61,11 +70,7 @@ NO_PRINT_DESCRIPTION =
     Do not print output in stdout
   DESC
 
-  
-module Output
-
-  def self.[](txt)
-    STDOUT.puts(txt) unless Randpass.noprint?
-    Clipboard.copy(txt) unless Randpass.nocopy?
-  end
-end
+NO_SAVE_DESCRIPTION =
+  <<~DESC
+    Do not save list output as txt file
+  DESC

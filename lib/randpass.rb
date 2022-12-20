@@ -8,10 +8,6 @@ module Randpass
 
   class << self
 
-    @output = true
-    @copy = true
-
-
     def nocopy?
       @copy == false
     end
@@ -29,6 +25,16 @@ module Randpass
 
     def noprint!
       @output = false
+    end
+
+
+    def nosave?
+      @save == false
+    end
+
+
+    def nosave!
+      @save = false
     end
   end
 end
