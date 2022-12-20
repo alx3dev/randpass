@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require_relative './output'
+require_relative 'output'
+require_relative 'setup_gem'
 
 opts = Optimist.options do
-
   banner BANNER
 
   opt :num,     NUMBER_DESCRIPTION,     short: 'n', long: 'char',     type: :integer
@@ -18,15 +18,12 @@ opts = Optimist.options do
 
   opt :setup,   SETUP_DESCRIPTION,      short: 'i', long: 'gem-install'
 
-
-  version "Randpass #{Randpass::VERSION}"
+  version "Randpass version #{Randpass::VERSION}"
 end
 
 if opts[:setup]
 
-  dir = File.expand_path(__FILE__).gsub('/bin/randpass', '')
-  Dir.chdir dir
-  system 'bin/setup'
+  UserOS.gem_init
   exit(1)
 
 else
@@ -41,30 +38,29 @@ else
   Randpass.nosave!  if opts[:nosave]
   Randpass.noprint! if opts[:noprint]
 
-  case
-  when opts[:list] && opts[:num]
+  if opts[:list] && opts[:num]
     Randpass.generate_list opts[:num].to_i, comments: opts[:list]
     Output[Randpass.storage]
 
-  when opts[:list]
+  elsif opts[:list]
     Randpass.generate_list nil, comments: opts[:list]
     Output[Randpass.storage]
 
-  when opts[:num] && opts[:random]
+  elsif opts[:num] && opts[:random]
     Randpass.generate_list opts[:num], list: opts[:random]
     Output[Randpass.storage]
 
-  when opts[:random]
+  elsif opts[:random]
     Randpass.generate_list nil, list: opts[:random]
     Output[Randpass.storage]
 
-  when opts[:num]
+  elsif opts[:num]
     Output[Randpass[opts[:num]]]
 
-  when ARGV.empty?
+  elsif ARGV.empty?
     Output[Randpass[20]]
 
-  when ARGV.size == 1
+  elsif ARGV.size == 1
     Output[Randpass[ARGV[0].to_i]]
   end
 
