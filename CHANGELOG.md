@@ -6,6 +6,7 @@
 - If `--dir` is not defined, list is saved in working dir, instead of gem root  
 - Clipboard gem is used only in executable  
 - Change some executable arguments (`-c`, `-k`)  
+- Better gem installation process
 
 
 ## [0.2.0] - 2022-12-12
