@@ -31,7 +31,7 @@ NUMBER_DESCRIPTION =
     Number of password characters
       randpass -n 20 -l github rubygems
 
-    -------------------------------------
+    ----------------------------------
   DESC
 
 LIST_DESCRIPTION =
@@ -39,7 +39,7 @@ LIST_DESCRIPTION =
     Save list of passwords for given comments
       randpass -l GitHub GitLab StackOverflow
 
-    -------------------------------------
+    ----------------------------------
   DESC
 
 RANDOM_DESCRIPTION =
@@ -48,7 +48,7 @@ RANDOM_DESCRIPTION =
       randpass -r 5
       randpass -r 5 -n 25
 
-    -------------------------------------
+    ----------------------------------
   DESC
 
 PATH_DESCRIPTION =
@@ -64,12 +64,12 @@ CLIPBOARD_DESCRIPTION =
 
 NO_COPY_DESCRIPTION =
   <<~DESC
-    Do not copy password into clipboard
+    Do not copy password to clipboard
   DESC
 
 NO_PRINT_DESCRIPTION =
   <<~DESC
-    Do not print output in stdout
+    Do not print output to stdout
   DESC
 
 NO_SAVE_DESCRIPTION =
