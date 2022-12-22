@@ -16,7 +16,7 @@ BANNER =
   <<~DESC
     randpass
     randpass 33
-    randpass -n 25 -r 5 --path '/path/for/output'
+    randpass -n 25 -r 5 --dir 'output/directory'
     :
   DESC
 
