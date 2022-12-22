@@ -7,9 +7,8 @@ Gem::Specification.new do |s|
   s.version     = Randpass::VERSION
   s.summary     = 'Ruby random password generator'
   s.description = <<~DESCRIPTION
-    Generate single password or list, with or without comments,
-    and copy password in clipboard (or not). Password is generated with
-    SecureRandom#base64 + random special characters.
+    Ruby random password generator. Allow single password or list, comments,
+    use of clipboard and/or STDOUT.
   DESCRIPTION
 
   s.license = 'MIT'

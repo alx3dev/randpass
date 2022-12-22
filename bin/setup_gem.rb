@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Helper module for gem installation
 module UserOS
   GEM_ROOT = File.expand_path(__FILE__).gsub('/bin/setup_gem.rb', '')
 
@@ -16,6 +17,7 @@ module UserOS
       !windows? && !mac?
     end
 
+    # Call setup script based on user OS, if randpass is not installed
     def gem_init
       if system('bin/randpass --version')
         puts 'was found on the system'

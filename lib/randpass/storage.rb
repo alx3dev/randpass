@@ -8,9 +8,9 @@ module Randpass
 
     attr_accessor :path
 
-    # Add password to array
-    # @param [String] pass **Required**. Add password to list
-    # @param [String] comm Optional. Comment to write with password
+    # Add password to list
+    # @param [String] pass **Required**. Password
+    # @param [String] comm Optional. Password comment
     #
     def add(pass, comm = nil)
       reload unless @initialized
@@ -18,13 +18,14 @@ module Randpass
       @temp << line
     end
 
+    # Clear old password list
     def reload
       @path ||= Dir.pwd
       @temp = Array.new
       @initialized = true
     end
 
-    # Save list of passwords in txt file
+    # Save list of passwords as txt file
     def finalize
       unless Randpass.nosave?
         temp = @temp.join "\n"

@@ -2,7 +2,9 @@ require_relative '../lib/randpass/version' unless defined? Randpass::VERSION
 
 require 'optimist'
 
+# Check if password should be printed and/or copied
 module Output
+  # @param [String] pass **Required**. Password
   def self.[](txt)
     txt = txt.join("\n") if txt.is_a?(Array)
     STDOUT.puts(txt) unless Randpass.noprint?
