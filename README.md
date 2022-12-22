@@ -1,10 +1,10 @@
 # Randpass v0.3.0
 
 Ruby random password generator.  
-Generate password and copy in clipboard, or generate list and/or save as `.txt` file.  
+Generate password and copy in clipboard, or generate list and/or save it as `.txt` file.  
 File is saved as plain text, it is up to end-user to decide how to secure it.  
 
-Password is generated with `SecureRandom#base64` and a few special characters `! # * $ % _ @`  
+Password is generated with `SecureRandom#base64` and a few (random) special characters `! # * $ % _ @`  
 
 
 ## Dependencies
@@ -31,7 +31,7 @@ Setup script will check and install `xsel` if nothing is found.
    `randpass --clear`  
 
  - add `-c` or `--noc` to disable clipboard copy  
-    `randpass 35 --noc`  
+    `randpass 35 -c`  
 
  - add `-p` or `--nop` to disable STDOUT  
     `randpass 20 -p`  
@@ -46,7 +46,7 @@ Setup script will check and install `xsel` if nothing is found.
     `randpass -n 20 -r 10`  
 
  - add `-s` or `--nos` to disable saving list as a file  
-    `randpass -n 20 -r 5 --nos` 
+    `randpass -n 20 -r 5 -s` 
     `randpass -r 10 --nos --noc`  
 
  - add `-d` or `--dir` as location to store password list  

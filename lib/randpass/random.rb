@@ -2,17 +2,16 @@
 
 require 'securerandom'
 
-# Generate random password with SecureRandom#base64 and a few
-# special characters.
-#
 module Randpass
-
-  # Allowed specials. xxx is just a skip-flag for #add_special_chars
+  # Allowed specials (xxx is just a skip-flag)
   ARRAY = %w[! # * $ % _ @ xxx].freeze
 
   class << self
-
+    # Generate random password
+    #
+    # @param  [Integer] chars_no Optional. Number of password characters. Default: 25.
     # @return [String]
+    #
     def randpass(chars_no = nil)
 
       chars_no = 25 if [nil, 0, 1].include?(chars_no)

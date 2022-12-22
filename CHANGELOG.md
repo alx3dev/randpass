@@ -1,4 +1,5 @@
-## [0.3.0 - dev branch] - 2022-12-16
+## [0.3.0] - 2022-12-22
+
 **[UPDATE]**  
 - Remove instance method `randpass`  
 - Store password list as array instead of string  
