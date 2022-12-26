@@ -19,10 +19,6 @@ module UserOS
 
     # Call setup script based on user OS, if randpass is not installed
     def gem_init
-      if system('bin/randpass --version')
-        puts 'was found on the system'
-        return
-      end
       Dir.chdir GEM_ROOT
       linux? ? system('bin/setup') : system('bundle install')
     end
