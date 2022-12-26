@@ -37,7 +37,7 @@ Gem::Specification.new do |s|
                 README.md
                 randpass.gemspec]
 
-  s.required_ruby_version = '>= 2.6', '< 3.2'
+  s.required_ruby_version = '>= 2.6', '< 3.3'
 
   s.add_runtime_dependency 'clipboard', '~> 1.3'
   s.add_runtime_dependency 'optimist', '~> 3.0.1'

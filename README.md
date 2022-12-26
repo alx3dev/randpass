@@ -1,7 +1,7 @@
 # Randpass v0.3.0
 
 Ruby random password generator.  
-Generate password and copy in clipboard, or generate list and/or save it as `.txt` file.  
+Generate password and copy in clipboard, or generate list and/or save as `.txt` file.  
 File is saved as plain text, it is up to end-user to decide how to secure it.  
 
 Password is generated with `SecureRandom#base64` and a few (random) special characters `! # * $ % _ @`  
