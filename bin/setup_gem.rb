@@ -19,8 +19,14 @@ module UserOS
 
     # Call setup script based on user OS, if randpass is not installed
     def gem_init
-      Dir.chdir GEM_ROOT
-      linux? ? system('bin/setup') : system('bundle install')
+      if windows?
+        dir = File.expand_path(__FILE__).gsub('\bin\setup_gem.rb', '')
+        system("bundle install")
+      else
+        dir = File.expand_path(__FILE__).gsub('/bin/setup_gem.rb', '')
+        Dir.chdir(dir)
+        mac? ? system("bundle install") : system("bin/setup")
+      end
     end
   end
 end
