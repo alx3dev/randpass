@@ -35,6 +35,7 @@ Gem::Specification.new do |s|
                 bin/setup
                 LICENSE
                 README.md
+                Gemfile
                 randpass.gemspec]
 
   s.required_ruby_version = '>= 2.6', '< 3.3'
