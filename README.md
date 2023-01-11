@@ -1,4 +1,4 @@
-# Randpass v0.3.0
+# Randpass v0.3.3
 
 Ruby random password generator.  
 Generate password and copy in clipboard, or generate list and/or save as `.txt` file.  
