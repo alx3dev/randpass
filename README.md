@@ -1,6 +1,6 @@
 # Randpass v0.3.3
 
-Ruby random password generator.  
+Ruby random password generator (not a password manager!).  
 Generate password and copy in clipboard, or generate list and/or save as `.txt` file.  
 File is saved as plain text, it is up to end-user to decide how to secure it.  
 
