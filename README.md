@@ -56,7 +56,10 @@ Setup script will check and install `xsel` if nothing is found.
 
 ## How to install
 
- - install from rubygems
+ - install from rubygems  
+> Randpass require gem `Optimist`, install it with `gem install optimist`  
+> You need it only when installing from rubygems.  
+> Future release will remove it  
 
 ```
 gem install randpass && randpass -i
